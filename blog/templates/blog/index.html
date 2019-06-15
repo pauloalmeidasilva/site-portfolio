@@ -1,0 +1,271 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="pt-br"> <!--<![endif]-->
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<meta name="description" content="Portifólio de projetos.">
+<meta name="author" content="Paulo Ricardo Almeida da Silva">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<title>Paulo Ricardo Almeida da Silva</title>
+
+<!-- STYLES -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+<link rel="stylesheet" type="text/css" href="{% static 'css/plugins.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+<!--[if lt IE 9]> <script type="text/javascript" src="js/modernizr.custom.js"></script> <![endif]-->
+<!-- /STYLES -->
+
+</head>
+
+<body>
+
+<div class="preloader">
+        <div class="anim pulse"><i class="fas fa-bolt"></i></div>
+    </div>
+    <div class="preloader-left"></div>
+    <div class="inline-menu-container">
+        <span class="status">Estou disponível para Freelance</span>
+        <ul class="inline-menu">
+            <li class="about menu-item">Currículo</li>
+            <li class="portfolio menu-item">Portfolio</li>
+            <li class="blog menu-item">Blog</li>
+            <li class="contact menu-item">Contato</li>
+            <li id="close" class="menu-item"><i class="fas fa-times fa-sm"></i></li>
+        </ul>
+    </div>
+    <section class="home img-bg" style="background: url(https://pplware.sapo.pt/wp-content/uploads/2016/02/clean-coding-best-practices-720x405.jpg) 0 0; background-size: cover;">
+        <div class="overlay opacity5"></div>
+        <div class="container">
+            <div class="name-block">
+                <div class="name-block-container">
+                    <h1><span>Olá, Eu sou</span>Paulo Ricardo</h1>
+                    <h2>Desenvolvedor Web</h2>
+                    <a target="_blank" href="" class="btn btn-download">Baixe meu currículo</a>
+                    <ul class="social">
+                        <li><a href="https://www.facebook.com/paulocdjsilva"><i class="fab fa-facebook"></i></a></li>
+                        <li><a href="https://www.linkedin.com/in/paulo-silva-4471a1171/"><i class="fab fa-linkedin"></i></a></li>
+                        <li><a href="https://www.instagram.com/paulocdjsilva"><i class="fab fa-instagram"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="menu-blocks">
+                <div class="about-block menu-block">
+                    <div class="about-block-container">
+                        <h2 class="about menu-item">Currículo</h2>
+                    </div>
+                </div>
+                <div class="portfolio-block  menu-block">
+                    <div class="portfolio-block-container">
+                        <h2 class="portfolio menu-item">Portfolio</h2>
+                    </div>
+                </div>
+                <div class="blog-block  menu-block">
+                    <div class="blog-block-container">
+                        <h2 class="blog menu-item">Blog</h2>
+                    </div>
+                </div>
+                <div class="contact-block  menu-block">
+                    <div class="contact-block-container">
+                        <h2 class="contact menu-item">Contato</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="content-blocks about">
+                <section class="content" id="about">
+                    <div class="block-content">
+                        <h3 class="block-title">Perfil</h3>
+                        <h3 class="subheading">Sou graduando em <strong>Tecnologia em Análise e Desenvolvimento de Sistemas</strong> pelo Instituto Federal de Educação, Ciência e Tecnologia de São Paulo</h3>
+                        <p>Tenho experiencia com desenvolvimento web front e back-end. Trabalho com PHP e Python para web.</p>
+                        <div class="info-list row">
+                            <div class="col-sm-6"><span>Nome: </span> Paulo Ricardo Almeida da Silva</div>
+                            <div class="col-sm-6"><span>Data de Nascimento: </span> 1 de novembro de 1988 </div>
+                            <div class="col-sm-6"><span>E-mail: </span> paulocdjsilva@gmail.com</div>
+                            <div class="col-sm-6"><span>Telefone: </span> +55 12 99107-3876</div>
+                            <div class="col-sm-6"><span>Interesse: </span> freelance</div>
+                        </div>
+                        <img class="sign" src="images/signature.png" alt="" />
+                    </div>
+                    <div class="block-content">
+                        <h3 class="block-title">Conhecimentos</h3>
+                        {% for conhecimento in conhecimentos %}
+                        <label class="progress-bar-label">{{ conhecimento.nome }} - <span>{{ conhecimento.tempo }} de experincia</span></label>
+                        <div class="progress">
+                            <div style="width: {{ conhecimento.classificacao }}%;" class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
+                                <span>{{ conhecimento.classificacao }}%</span>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="block-content">
+                        <h3 class="block-title">Experiência Profissional</h3>
+                        <div class="timeline experience">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="exp-holder">
+                                        {% for experiencia in experiencias %}
+                                        <div class="exp">
+                                            <div class="hgroup">
+                                                <h4><span>{{ experiencia.cargo }}</span> @ {{ experiencia.instituicao }}</h4>
+                                                <h5>{{ experiencia.data_inicio }} - 
+                                                    {% if experiencia.data_fim == 'atual' %}
+                                                        <span class="current">Atual</span></h5>
+                                                    {% else %}
+                                                        {{ experiencia.data_fim }}</h5>
+                                                    {% endif %}
+                                            </div>
+                                            <p>{{ experiencia.descricao }}</p>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="block-content">
+                        <h3 class="block-title">Formação Acadêmica</h3>
+                        <div class="timeline education">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="exp-holder">
+                                        {% for formacao in formacoes %}
+                                        <div class="exp">
+                                            <div class="hgroup">
+                                                <h4><span>{{ formacao.curso }}</span> | {{ formacao.instituicao }}</h4>
+                                                <h5>{{ formacao.data_inicio }} - 
+                                                    {% if formacao.data_fim == 'atual' %}
+                                                        <span class="current">Atual</span></h5>
+                                                    {% else %}
+                                                        {{ formacao.data_fim }}</h5>
+                                                    {% endif %}
+                                            </div>
+                                            <p>{{ formacao.descricao }}</p>
+                                        </div>
+                                        {% endfor %}                                      
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="content-blocks portfolio">
+                <section class="content">
+                    <div class="block-content">
+                        <h3 class="block-title">Portfolio</h3>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="filters">
+                                </div>
+                                <div class="portfolio-container row isotope" id="portfolio-container">
+                                    <!-- WORK START -->
+                                    {% for projeto in projetos %}
+                                    <div class="col-md-4 col-sm-6 col-xs-12 portfolio-item artwork">
+                                        <a class="open-project" href="project-1.html">
+                                            <div class="portfolio-column">
+                                                <div class="portfolio-hover">
+                                                    <div class="portfolio-content">
+                                                        <h2>{{ projeto.nome }}</h2>
+                                                        <hr>
+                                                        <p>{{ projeto.descricao }}</p>
+                                                        <p>{{ projeto.linguagem }}</p>
+                                                    </div>
+                                                    <div class="portfolio-overlay"></div>
+                                                </div>
+                                                <img src="{{ projeto.foto }}" alt="">
+                                            </div>
+                                        </a>
+                                    </div>
+                                    {% endfor %}
+                                    <!-- WORK END -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="content-blocks blog">
+                <section class="content">
+                    <div class="block-content">
+                        <h3 class="block-title">My Blog</h3>
+                        <div class="row">
+                            <div class="col-md-10 mx-auto">
+                                {% for post in posts %}
+                                <div class="post">
+                                    <div class="post-thumbnail">
+                                        <!-- <a class="open-post" href="post-single.html">
+                                            <img src="images/blog/midium/4.jpg" alt="">
+                                        </a> -->
+                                    </div>
+                                    <div class="post-title">
+                                        <a class="open-post" href=""><h2>{{ post.title }}</h2></a>
+                                        <p class="post-info">
+                                            <span class="post-author">Posted by {{ post.author }}</span>
+                                            <span class="slash"></span>
+                                            <span class="post-date">{{ post.published_date }}</span>
+                                        </p>
+                                    </div>
+                                    <div class="post-body">
+                                        <p>{{ post.text|linebreaksbr }}</p>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="content-blocks contact">
+                <section class="content">
+                    <div class="block-content">
+                        <h3 class="block-title">Get in touch</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <form id="contactForm" data-toggle="validator" class="contact-form shake">
+                                    <div class="form-group">
+                                        <input id="name" type="text" class="form-control" name="Name" autocomplete="off" required data-error="Please enter your name" placeholder="* Your Name">
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input id="email" type="email" class="form-control" name="email" autocomplete="off" required data-error="Please enter your email" placeholder="* Your Email">
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea id="message" class="form-control textarea" rows="10" name="Message" required data-error="Please enter your message subject" placeholder="* Your Message"></textarea>
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <button id="submit" type="submit" class="btn selected">Send Message</button>
+                                        <div id="msgSubmit" class="h3 text-center hidden"></div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="content-blocks pop">
+                <div id="close-pop" class="close-pop">Close <i class="fas fa-times fa-sm"></i></div>
+                <section class="content"></section>
+            </div>
+        </div>
+    </section>
+
+	
+<!-- SCRIPTS -->
+<script src="{% static 'js/plugins.min.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+<!-- /SCRIPTS -->
+
+</body>
+</html>

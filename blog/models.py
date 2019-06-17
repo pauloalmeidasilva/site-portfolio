@@ -47,9 +47,10 @@ class experiencia(models.Model):
         return self.cargo
 
 class portfolio(models.Model):
-    nome = models.CharField(max_length=200)
-    descricao = models.TextField()
-    foto = models.CharField(max_length=200)
+    nome = models.CharField(max_length=200, blank=False)
+    descricao = models.TextField(blank=False)
+    url = models.CharField(max_length=200, blank=True)
+    foto = models.FileField(upload_to='%Y/%m/%d/')
     linguagem = models.CharField(max_length=200)
 
     def __str__(self):

@@ -171,18 +171,19 @@
                                     <!-- WORK START -->
                                     {% for projeto in projetos %}
                                     <div class="col-md-4 col-sm-6 col-xs-12 portfolio-item artwork">
-                                        <a class="open-project" href="project-1.html">
-                                            <div class="portfolio-column">
-                                                <div class="portfolio-hover">
-                                                    <div class="portfolio-content">
-                                                        <h2>{{ projeto.nome }}</h2>
+                                        <a target="_blank" href="{{ projeto.url }}">
+                                            <div class="card p-3 shadow" style="min-height: 450px;">
+                                                <img class="card-img-top" src="/media/{{ projeto.foto }}" alt="{{ projeto.nome }}">
+                                                <div class="card-body">
+                                                    <!--<div class="portfolio-content">-->
+                                                        <h5 class="card-title">{{ projeto.nome }}</h5>
                                                         <hr>
-                                                        <p>{{ projeto.descricao }}</p>
-                                                        <p>{{ projeto.linguagem }}</p>
-                                                    </div>
-                                                    <div class="portfolio-overlay"></div>
+                                                        <p class="card-text">{{ projeto.descricao }}</p>
+                                                        <p class="card-text">{{ projeto.linguagem }}</p>
+                                                    <!--</div>-->
+                                                    <!--<div class="portfolio-overlay"></div>-->
                                                 </div>
-                                                <img src="{{ projeto.foto }}" alt="">
+                                                <!--<img src="/media/{{ projeto.foto }}" alt="">-->
                                             </div>
                                         </a>
                                     </div>
